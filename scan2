@@ -1,23 +1,14 @@
 #!/bin/bash
-# portcheck tool
+#
+# Prooov
+clear
+#
+firstvalue=Hello
+secvalue=World
+RIGHT_NOW=$(date +"%x %r %Z")
+echo $firstvalue $secvalue
+echo $RIGHT_NOW
 
-usage()
-{
-  echo -e "\n USAGE: ./${0##*/} [host|ip] \n"
-  exit
-}
-
-check_port()
-{
-  local host=${1}
-  local port=${2}
-  if nc -w 5 -z ${host-ip} ${port} 2>/dev/null
-  then
-  echo -e "\a\n => Port ${port} at ${host} is open"
-  else
-  echo -e "\a\n => Port ${port} at ${host} is closed"
-  fi
-}
-[[ $# -ne 2 ]] && usage
-check_port ${1} ${2}
+nmap="nmap --open 193.40.12.227"
+$nmap
 
