@@ -1,0 +1,23 @@
+#!/bin/bash
+# portcheck tool
+
+usage()
+{
+  echo -e "\n USAGE: ./${0##*/} [host|ip] \n"
+  exit
+}
+
+check_port()
+{
+  local host=${1}
+  local port=${2}
+  if nc -w 5 -z ${host-ip} ${port} 2>/dev/null
+  then
+  echo -e "\a\n => Port ${port} at ${host} is open"
+  else
+  echo -e "\a\n => Port ${port} at ${host} is closed"
+  fi
+}
+[[ $# -ne 2 ]] && usage
+check_port ${1} ${2}
+
