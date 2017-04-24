@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Kasutaja tervitus
+#
+# skripti algus
+#
+# echo "Tere User!"
+echo -n "Tere, "
+echo -n `whoami | cut -c1 | tr [:lower:] [:upper:]` # loika esimene taht ja muuda suureks.
+echo -n `whoami | cut -c2-` # loika koik tahed alates 2-st
+echo "!"
+#
+# Skripti lopp
