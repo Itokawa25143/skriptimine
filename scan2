@@ -1,18 +1,18 @@
 #!/bin/bash
-$ bash -x script.sh 2> log
 # Prooov
 clear
 #
 echo -n "Sisesta veebileht: "
 read veebileht
 nmap="nmap --open $veebileht"
-$nmap
+$nmap | tee -a $veebileht.log
 # Kysime, kas kasutaja soovib tulemusi txt failina salvestada?
 echo "Kas soovite faili .txt failina salvestada?"
 read -p "Valige (Y/N): "
+read Valige
 if [ "$Valige" = "Y" ]; then
- touch ./scan2 > $veebileht.txt
- echo "Fail on salvestatud."
+# Faili salvestamine
+echo "Fail on salvestatud."
 else
  echo "Faili ei salvestatud"
  exit
