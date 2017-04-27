@@ -3,12 +3,17 @@
 # Prooov
 clear
 #
-firstvalue=Hello
-secvalue=World
-RIGHT_NOW=$(date +"%x %r %Z")
-echo $firstvalue $secvalue
-echo $RIGHT_NOW
-
-nmap="nmap --open 193.40.12.227"
+echo -n "Sisesta veebileht: "
+read veebileht
+nmap="nmap --open $veebileht"
 $nmap
-
+# Kysime, kas kasutaja soovib tulemusi txt failina salvestada?
+read salvestada
+echo "Kas soovite faili .txt failina salvestada?"
+read -p "Valige (Y/N)"
+if [ "$Valige" = "Y" ]; then
+ read "./scan2.sh > $veebileht.txt"
+ touch $nmap > $veebileht.txt
+ echo "Fail on salvestatud."
+exit
+fi
