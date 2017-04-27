@@ -5,17 +5,11 @@ clear
 echo -n "Sisesta veebileht: "
 read veebileht
 nmap="nmap --open $veebileht"
-$nmap | tee -a $veebileht.log
-# Kysime, kas kasutaja soovib tulemusi txt failina salvestada?
-echo "Kas soovite faili .txt failina salvestada?"
-read -p "Valige (Y/N): "
-read Valige
-if [ "$Valige" = "Y" ]; then
-# Faili salvestamine
-echo "Fail on salvestatud."
-else
- echo "Faili ei salvestatud"
- exit
- echo
-fi
+$nmap | tee -a $veebileht.txt
+# Utleme, et fail on salvestatud
+read salvestatud
+echo "Fail on salvestatud $veebileht.txt kujul."
+# skripti lopp
+exit
+
 
