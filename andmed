@@ -1,0 +1,16 @@
+#!/bin/bash
+# Andmed masina kohta
+clear
+#
+# Machine name
+echo "Hostname is: " && hostname;
+# CPU name
+cat /proc/cpuinfo | grep 'model name'
+# CPU cores
+cat /proc/cpuinfo | grep cores
+# Memory
+echo "Memory: " && free -m -h | awk '{print $2}' | awk 'FNR>=2 && FNR<=2'
+# Hard disk space
+echo "Hard disk space: " && df -hT /home | awk '{print $3}' | awk 'FNR>=2 && FNR <=2'
+# Linux distro valjastamine
+echo "Distro" && lsb_release -a | awk 'FNR>=2 && FNR<=2'
