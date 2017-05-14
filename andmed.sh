@@ -6,9 +6,6 @@ clear
 # Machine name
 printf "Machine name:		" && hostname
 
-# Full hostname
-# "Full hostname:		" && $(hostname).$(domainname)
-
 # IP address
 printf "IP address:		" && ifconfig eth0 | grep 'inet addr' | cut -d: -f2 | awk {'print $1'}
 
