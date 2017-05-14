@@ -10,7 +10,7 @@ printf "Machine name:		" && hostname
 # "Full hostname:		" && $(hostname).$(domainname)
 
 # IP address
-printf "IP address:		" && ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | awk 'FNR>=1 && FNR<=1'
+printf "IP address:		" && ifconfig eth0 | grep 'inet addr' | cut -d: -f2 | awk {'print $1'}
 
 # MAC address
 printf "MAC address:		" && cat /sys/class/net/eth0/address
